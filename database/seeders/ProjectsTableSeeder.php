@@ -16,16 +16,9 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 100; $i++) {
-            $project = new Project();
+        foreach(config('projects') as $objProject) {
 
-            $project->title = $faker->word();
-            $project->date = $faker->dateTime();
-            $project->description = $faker->paragraph();
-            $project->name = $faker->word();
-            $project->surname = $faker->word();
-
-            $project->save();
+            Project::create($objProject);
         }
     }
 }

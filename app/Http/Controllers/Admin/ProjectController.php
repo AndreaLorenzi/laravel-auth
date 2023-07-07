@@ -15,31 +15,40 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = project::paginate(5);
+        $projects = Project::paginate(5);
 
         return view('admin.projects.index', compact('projects'));
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
+
     {
-        //
+        // $request->validate([
+            
+        // ]);
+
+        $data = $request->all();
+
+        $newProject = new Project();
+        $newProject->title=$data['title'];
+        $newProject->creation_date=$data['creation_date'];
+        $newProject->last_update=$data['last_update'];
+        $newProject->description=$data['description'];
+        $newProject->languages=$data['languages'];
+        $newProject->author=$data['author'];
+        $newProject->collaborators=$data['collaborators'];
+        $newProject->link_github=$data['link_github'];
+        $newProject->sace();
+
+        return to_route('admin.projects.show', ['project' =>$newProject]);
     }
 
     /**
