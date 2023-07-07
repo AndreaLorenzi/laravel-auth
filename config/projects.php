@@ -9,7 +9,7 @@ return[
         "collaborators"    => "",
         "description"      => "A clone of the spotify web interface",
         "languages"        => "HTML, CSS",
-        "link_github"      => "",
+        "link_github"      => "https://github.com/AndreaLorenzi/html-css-spotifyweb",
     ],
     [
         "title"            => "Campominato Dom",
@@ -19,7 +19,7 @@ return[
         "collaborators"    => "",
         "description"      => "A minefield clone",
         "languages"        => "HTML, CSS, JS",
-        "link_github"      => "",
+        "link_github"      => "https://github.com/AndreaLorenzi/js-campominato-dom",
     ],
 
     [
@@ -30,7 +30,7 @@ return[
         "collaborators"    => "",
         "description"      => "A Facebook clone",
         "languages"        => "HTML, CSS, JS",
-        "link_github"      => "",
+        "link_github"      => "https://github.com/AndreaLorenzi/js-social-posts",
     ],
 
     [
@@ -41,7 +41,7 @@ return[
         "collaborators"    => "",
         "description"      => "A Whatsapp clone",
         "languages"        => "HTML, CSS, JS",
-        "link_github"      => "",
+        "link_github"      => "https://github.com/AndreaLorenzi/vue-boolzapp",
     ],
 
     [
@@ -50,9 +50,9 @@ return[
         "creation_date"    => "2023-05-29",
         "last_update"      => "2023-05-31",
         "collaborators"    => "",
-        "description"      => "Avada Driving clone",
+        "description"      => "Avada Restourant Clone",
         "languages"        => "HTML, VUE, JS",
-        "link_github"      => "",
+        "link_github"      => "https://github.com/AndreaLorenzi/proj-html-vuejs",
     ],
 
     [
@@ -63,7 +63,7 @@ return[
         "collaborators"    => "",
         "description"      => "A Dc Comics site homepage clone",
         "languages"        => "BLADE, PHP",
-        "link_github"      => "",
+        "link_github"      => "https://github.com/AndreaLorenzi/laravel-dc-comics",
     ],
 
     [
@@ -75,6 +75,6 @@ return[
         "collaborators"    => "Andrea Lorenzi, Vincenzo minarrdi, Gianluca Ligori, Andrea Serra, Gabriella Valentina",
         "description"      => "A invoices organizer",
         "languages"        => "PHP, BLADE, JS",
-        "link_github"      => "",
+        "link_github"      => "https://github.com/AndreaLorenzi/laravel-boolean",
     ],
 ];

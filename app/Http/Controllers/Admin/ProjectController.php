@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    private $validations = [
+        'title'         => 'required|string|min:4|max:50',
+        'author'        => 'required|string|max:30',
+        'creation_date' => 'required|date',
+        'last_update'   => 'required|date',
+        'collaborators' => 'string|max:150',
+        'description'   => 'string',
+        'languages'     => 'required|string|max:50',
+        'link_github'   => 'required|string|max:150',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -31,24 +41,22 @@ class ProjectController extends Controller
     public function store(Request $request)
 
     {
-        // $request->validate([
-            
-        // ]);
+        $request->validate($this->validations);
 
         $data = $request->all();
-
+        // Salvare i dati nel database
         $newProject = new Project();
-        $newProject->title=$data['title'];
-        $newProject->creation_date=$data['creation_date'];
-        $newProject->last_update=$data['last_update'];
-        $newProject->description=$data['description'];
-        $newProject->languages=$data['languages'];
-        $newProject->author=$data['author'];
-        $newProject->collaborators=$data['collaborators'];
-        $newProject->link_github=$data['link_github'];
-        $newProject->sace();
+        $newProject->title = $data['title'];
+        $newProject->author = $data['author'];
+        $newProject->creation_date = $data['creation_date'];
+        $newProject->last_update = $data['last_update'];
+        $newProject->collaborators = $data['collaborators'];
+        $newProject->description = $data['description'];
+        $newProject->languages = $data['languages'];
+        $newProject->link_github = $data['link_github'];
+        $newProject->save();
 
-        return to_route('admin.projects.show', ['project' =>$newProject]);
+        return redirect()->route('Admin.projects.show', ['project' => $newProject->id]);
     }
 
     /**
@@ -70,7 +78,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -82,17 +90,30 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $request->validate($this->validations);
+
+        $data = $request->all();
+        // Salvare i dati nel database
+        $newProject = new Project();
+        $newProject->title = $data['title'];
+        $newProject->author = $data['author'];
+        $newProject->creation_date = $data['creation_date'];
+        $newProject->last_update = $data['last_update'];
+        $newProject->collaborators = $data['collaborators'];
+        $newProject->description = $data['description'];
+        $newProject->languages = $data['languages'];
+        $newProject->link_github = $data['link_github'];
+        $newProject->update();
+
+        // return 'commentare se serve debuggare';
+        // $newComic = Comic::create($data);
+
+        return redirect()->route('Admin.project.show', ['project' => $newProject]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return to_route('admin.projects.index')->with('delete_success',$project);
     }
 }

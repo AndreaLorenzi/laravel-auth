@@ -33,10 +33,11 @@
                         <a class="btn btn-warning"
                             href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">Edit</a>
                         <form action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}" method="post"
-                            class="d-inline-block">
+                            id="confirm-delete" class="d-inline-block">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger js-delete" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                data-id="{{ $project->id }}">Delete</button>
                         </form>
                     </td>
                 </tr>
